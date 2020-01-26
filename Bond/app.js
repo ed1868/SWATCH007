@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-const port = 6000;
+const port = 3005;
 
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
@@ -19,7 +19,7 @@ const ensureLogin = require("connect-ensure-login");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const flash = require("connect-flash");
-
+var cors = require('cors');
 const enigma = require("./BankWires/accounts");
 
 mongoose
@@ -86,10 +86,8 @@ hbs.registerHelper("ifitsMe", (value, value1, options) => {
     : "";
 });
 
-// default value for title local
-app.locals.title = "Trello Replica";
+app.use(cors());
 
-app.locals.key = process.env.APIkey;
 
 // Enable authentication using session + passport
 app.use(
@@ -110,7 +108,7 @@ app.use((req, res, next) => {
 
 const safeRoute = require("./routes/routingNumber");
 
-app.use("/", safeRoute);
+app.use("/auth", safeRoute);
 
 // const authRoutes = require('./routes/auth');
 
