@@ -21,7 +21,21 @@ enigma = () => {
       throw err;
     }
     console.log('FILE ONE ENCRYPTED',fileCreated);
-  });
+    Vault.create(hashTwo, (err,decoy) => {
+      if(err){
+        console.log(err);
+      }
+      console.log(`DECOY DEPLOYED: ${decoy}`);
+    });
+
+    console.log('DOUBLE INJECTION SUCCESFULL');
+
+  })
+
+  console.log('10 HOURS UNTIL LAUNCH');
+
+
+  
 };
 
 module.exports = enigma;
