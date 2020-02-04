@@ -11,15 +11,20 @@ export default class launchCodes extends Component {
 
   handleFormSubmit = e => {
     e.preventDefault();
-  
 
     const messengerAI = this.state;
 
-
-    this.sleeperCell.empDecoder(messengerAI)
+    this.sleeperCell
+      .empDecoder(messengerAI)
       .then(response => {
+        console.log("RESPONSE OF FRONT CALLING THE SERVICE", response);
 
-        console.log('RESPONSE OF FRONT CALLING THE SERVICE', response);
+        if (response == this.state.secretKey) {
+          console.log("YOU GOT THE CORRECT ANSWRR");
+        }
+        else{
+          console.log('WRONG');
+        }
         // this.setState({ ...this.state, redirect: true });
       })
       .catch(err => {
