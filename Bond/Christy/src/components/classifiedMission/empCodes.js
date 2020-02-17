@@ -23,15 +23,19 @@ class empDecoder {
   };
 
   empDecoder = credentials => {
-    console.log('PAYLOAD FROM FRONT END IN SERVICE',credentials);
-    console.log('payload sending...');
+    console.log("PAYLOAD FROM FRONT END IN SERVICE", credentials);
+    console.log("payload sending...");
 
-    return axios.
-      get("http://localhost:3005/auth/decoder")
+    return axios
+      .get("http://localhost:3005/auth/decoder")
       .then(response => {
-        console.log('NEW PAYLOAD RETURNED');
+        console.log("NEW PAYLOAD RETURNED");
 
-        console.log(response.data);
+        console.log("THE NEW PAYLOAD" + " " + response.data);
+
+        let filteredDataDump = response.data;
+
+        return filteredDataDump;
       })
       .catch(err => {
         if (err) {
