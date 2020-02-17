@@ -18,12 +18,17 @@ export default class launchCodes extends Component {
       .empDecoder(messengerAI)
       .then(response => {
         console.log("RESPONSE OF FRONT CALLING THE SERVICE", response);
+        let sillyHeart = response.secrets[0].key;
+        console.log(`silly heart ----- ${sillyHeart}`);
+        let decoy = response.secrets[1].key;
 
-        if (response == this.state.secretKey) {
+        if (sillyHeart == this.state.secretKey) {
           console.log("YOU GOT THE CORRECT ANSWRR");
-        }
-        else{
-          console.log('WRONG');
+          this.setState({ ["access"]: "granted" });
+
+          return;
+        } else {
+          console.log("WRONG");
         }
         // this.setState({ ...this.state, redirect: true });
       })
@@ -41,45 +46,54 @@ export default class launchCodes extends Component {
   };
 
   render() {
-    return (
-      <div>
-        <div className="row">
-          <form onSubmit={this.handleFormSubmit} className="col-sm-12">
-            <div className="row">
-              <div className="input-field col-sm-6">
-                <label for="vaultDoor">Agent:</label>
-                <input
-                  id="vaultDoor"
-                  value="Bond,James"
-                  type="text"
-                  className="validate"
-                />
+    console.log('this state ------', this.state);
+    if (this.state.access == "granted") {
+      console.log("entroooooooooo");
+      return <h1>Hello</h1>;
+    } else {
+      return (
+        <div>
+          <div className="row">
+            <form onSubmit={this.handleFormSubmit} className="col-sm-12">
+              <div className="row">
+                <div className="input-field col-sm-6">
+                  <label for="vaultDoor">Agent:</label>
+                  <input
+                    id="vaultDoor"
+                    value="Bond,James"
+                    type="text"
+                    className="validate"
+                  />
+                </div>
               </div>
-            </div>
-            <br></br>
-            <div className="row">
-              <div className="input-field col-sm-12">
-                <input
-                  id="vaultKey"
-                  name="secretKey"
-                  onChange={e => this.handleChange(e)}
-                  placeholder="PASSWORD"
-                  type="text"
-                  className="validate"
-                />
+              <br></br>
+              <div className="row">
+                <div className="input-field col-sm-12">
+                  <input
+                    id="vaultKey"
+                    name="secretKey"
+                    onChange={e => this.handleChange(e)}
+                    placeholder="PASSWORD"
+                    type="text"
+                    className="validate"
+                  />
+                </div>
               </div>
-            </div>
-            <div className="row">
-              <div className="button">
-                <br></br>
-                <button type="submit" className="btn btn-dark btn-block btn-lg">
-                  Login
-                </button>
+              <div className="row">
+                <div className="button">
+                  <br></br>
+                  <button
+                    type="submit"
+                    className="btn btn-dark btn-block btn-lg"
+                  >
+                    Login
+                  </button>
+                </div>
               </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
