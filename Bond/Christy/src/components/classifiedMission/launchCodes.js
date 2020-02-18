@@ -24,7 +24,7 @@ export default class launchCodes extends Component {
 
         if (sillyHeart == this.state.secretKey) {
           console.log("YOU GOT THE CORRECT ANSWRR");
-          this.setState({ ["access"]: "granted" });
+          this.setState({ "access": "granted" });
 
           return;
         } else {
@@ -38,6 +38,11 @@ export default class launchCodes extends Component {
         }
       });
   };
+  accessChanger = e => {
+    this.setState({ "access": "denied" });
+    this.setState({ "secretKey": " " });
+
+  };
 
   handleChange = e => {
     const { name, value } = e.target;
@@ -46,10 +51,17 @@ export default class launchCodes extends Component {
   };
 
   render() {
-    console.log('this state ------', this.state);
+    console.log("this state ------", this.state);
     if (this.state.access == "granted") {
       console.log("entroooooooooo");
-      return <h1>Hello</h1>;
+      return (
+        <div>
+          <h1>Hello</h1>
+          <button type="submit" onClick={this.accessChanger}>
+            Deny Access
+          </button>
+        </div>
+      );
     } else {
       return (
         <div>
