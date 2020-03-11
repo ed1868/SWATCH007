@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="5cbab8c7-acec-44dc-92b2-a1e48507deff" name="swatch" url="http://3.21.98.26">
+        <fileTransfer host="3.21.98.26" port="22" privateKey="$PROJECT_DIR$/../swatch.pem" rootFolder="/var/www/html/SWATCH007" accessType="SFTP" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

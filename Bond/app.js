@@ -22,16 +22,16 @@ const flash = require("connect-flash");
 var cors = require('cors');
 const enigma = require("./BankWires/accounts");
 
-mongoose
-  .connect("mongodb://localhost/signalConnected", { useNewUrlParser: true })
-  .then(x => {
-    let dbName = "MI6 DATABASE ENTERED:";
-    console.log(`SUCCESSFULLY CONNECTED: ${dbName}`);
-    enigma();
-  })
-  .catch(err => {
-    console.error("Error connecting to mongo", err);
-  });
+// mongoose
+//   .connect("mongodb://localhost/signalConnected", { useNewUrlParser: true })
+//   .then(x => {
+//     let dbName = "MI6 DATABASE ENTERED:";
+//     console.log(`SUCCESSFULLY CONNECTED: ${dbName}`);
+//     enigma();
+//   })
+//   .catch(err => {
+//     console.error("Error connecting to mongo", err);
+//   });
 
 const app_name = require("./package.json").name;
 const debug = require("debug")(
